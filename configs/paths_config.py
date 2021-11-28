@@ -6,6 +6,12 @@ dataset_paths = {
 	'celeba_train_segmentation': '',
 	'celeba_test_segmentation': '',
 	'ffhq': '',
+	'etl_train': 'datasets/ETL_Test/train',
+	'etl_test': 'datasets/ETL_Test/test',
+	'etl_train_source': 'datasets/ETL_Test/train/source',
+	'etl_train_target': 'datasets/ETL_Test/train/target',
+	'etl_test_source': 'datasets/ETL_Test/test/source',
+	'etl_test_target': 'datasets/ETL_Test/test/target',
 }
 
 model_paths = {
