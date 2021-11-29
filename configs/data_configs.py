@@ -40,9 +40,9 @@ DATASETS = {
 	},
 	'etl_test': {
 		'transforms': transforms_config.FontToKanjiTransform,
-		'train_source_root': dataset_paths['celeba_train'],
-		'train_target_root': dataset_paths['celeba_train'],
-		'test_source_root': dataset_paths['celeba_test'],
-		'test_target_root': dataset_paths['celeba_test'],
+		'train_source_root': dataset_paths['etl_train'],
+		'train_target_root': dataset_paths['etl_train'],
+		'test_source_root': dataset_paths['etl_test'],
+		'test_target_root': dataset_paths['etl_test'],
 	}
 }
