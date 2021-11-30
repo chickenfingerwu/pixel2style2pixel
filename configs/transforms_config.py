@@ -168,15 +168,15 @@ class FontToKanjiTransform(TransformsConfig):
             'transform_gt_train': transforms.Compose([
                 transforms.Resize((256, 256)),
                 transforms.ToTensor(),
-                transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
-                ElasticDistortion(6, 6, 7)]),
+                transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]),
+                # ElasticDistortion(6, 6, 7)]),
             'transform_source': transforms.Compose([
                 transforms.Resize((256, 256)),
                 transforms.ToTensor()]),
             'transform_test': transforms.Compose([
                 transforms.Resize((256, 256)),
-                transforms.ToTensor(),
-                transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]),
+                transforms.ToTensor()]),
+                # transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]),
             'transform_inference': transforms.Compose([
                 transforms.Resize((256, 256)),
                 transforms.ToTensor()]),
