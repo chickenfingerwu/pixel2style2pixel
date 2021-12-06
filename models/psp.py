@@ -8,7 +8,7 @@ import math
 import torch
 from torch import nn
 from models.encoders import psp_encoders
-from models.stylegan2.model import Generator
+from models.stylegan2.model import Generator, GeneratorAda
 from configs.paths_config import model_paths
 
 
@@ -28,7 +28,8 @@ class pSp(nn.Module):
 		self.opts.n_styles = int(math.log(self.opts.output_size, 2)) * 2 - 2
 		# Define architecture
 		self.encoder = self.set_encoder()
-		self.decoder = Generator(self.opts.output_size, 512, 8)
+		# self.decoder = Generator(self.opts.output_size, 512, 8)
+		self.decoder = GeneratorAda()
 		self.face_pool = torch.nn.AdaptiveAvgPool2d((256, 256))
 		# Load weights if needed
 		self.load_weights()
@@ -55,8 +56,8 @@ class pSp(nn.Module):
 			print('Loading encoders weights from irse50!')
 			encoder_ckpt = torch.load(model_paths['ir_se50'])
 			# if input to encoder is not an RGB image, do not load the input layer weights
-			if self.opts.label_nc != 0:
-				encoder_ckpt = {k: v for k, v in encoder_ckpt.items() if "input_layer" not in k}
+			# if self.opts.label_nc != 0:
+			# 	encoder_ckpt = {k: v for k, v in encoder_ckpt.items() if "input_layer" not in k}
 			self.encoder.load_state_dict(encoder_ckpt, strict=False)
 			print('Loading decoder weights from pretrained!')
 			ckpt = torch.load(self.opts.stylegan_weights)
